@@ -1,6 +1,8 @@
 # PersonalWeb - 个人技术博客
 
-基于 Hexo + Butterfly 主题搭建的个人技术博客，通过 GitHub 自动部署到 Cloudflare Pages。
+基于 Hexo + Butterfly 主题搭建的个人技术博客，通过 GitHub 自动部署到 Cloudflare（Workers）。
+
+线上地址：https://personal-blog.2505157114.workers.dev/
 
 ## 日常写作流程
 
@@ -41,11 +43,11 @@ git push
 ## 部署架构
 
 ```
-写作 → git push → GitHub 仓库 → Cloudflare Pages 自动构建（npx hexo generate）
+写作 → git push → GitHub 仓库 → Cloudflare 自动构建（hexo generate）
      → 全球 CDN 发布 → 自定义域名
 ```
 
-Cloudflare Pages 构建配置：
+Cloudflare 构建配置（Workers → Settings → Build）：
 
 - 构建命令：`npx hexo generate`
 - 输出目录：`public`
@@ -54,4 +56,4 @@ Cloudflare Pages 构建配置：
 
 - [Hexo 文档](https://hexo.io/zh-cn/docs/)
 - [Butterfly 主题文档](https://butterfly.js.org/)
-- [Cloudflare Pages 文档](https://developers.cloudflare.com/pages/)
+- [Cloudflare Workers 文档](https://developers.cloudflare.com/workers/)
