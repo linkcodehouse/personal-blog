@@ -2,7 +2,7 @@
 
 基于 Hexo + Butterfly 主题搭建的个人技术博客，通过 GitHub 自动部署到 Cloudflare（Workers）。
 
-线上地址：https://personal-blog.2505157114.workers.dev/
+线上地址：https://blog.stackoverflowing.com/
 
 ## 日常写作流程
 
