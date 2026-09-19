@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- 「今日头条」· 手绘播报风：报纸+咖啡+半调网点 -->
+  <defs>
+    <pattern id="ht2" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="2.8" fill="#F5EFDD" opacity=".1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#1B2440"/>
+  <rect width="1600" height="1000" fill="url(#ht2)"/>
+
+  <g stroke="#12182B" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 放射线 -->
+    <g stroke="#F2B705" stroke-width="6" opacity=".6">
+      <line x1="1380" y1="120" x2="1440" y2="60"/>
+      <line x1="1450" y1="220" x2="1540" y2="180"/>
+      <line x1="140" y1="800" x2="60" y2="860"/>
+    </g>
+
+    <!-- 手绘报纸（斜放） -->
+    <g transform="rotate(-6 800 520)">
+      <rect x="420" y="240" width="760" height="560" rx="8" fill="#F5EFDD" stroke-width="9"/>
+      <!-- 报头 -->
+      <text x="800" y="330" font-family="Georgia, serif" font-size="84" font-weight="bold" fill="#1B2440" text-anchor="middle" letter-spacing="4" stroke="none">THE NEWS</text>
+      <line x1="470" y1="360" x2="1130" y2="360" stroke-width="6"/>
+      <line x1="470" y1="378" x2="1130" y2="378" stroke-width="4"/>
+      <!-- 栏目块 -->
+      <rect x="470" y="410" width="300" height="180" rx="10" fill="#2E9E96" stroke-width="7"/>
+      <path d="M 520 550 q 40 -70 90 -20 q 30 -50 70 0 q 40 -40 80 10" fill="none" stroke="#F5EFDD" stroke-width="7"/>
+      <g stroke-width="6">
+        <line x1="820" y1="425" x2="1080" y2="425"/>
+        <line x1="820" y1="460" x2="1080" y2="460"/>
+        <line x1="820" y1="495" x2="1040" y2="495"/>
+        <line x1="470" y1="640" x2="740" y2="640"/>
+        <line x1="470" y1="675" x2="1080" y2="675"/>
+        <line x1="470" y1="710" x2="1080" y2="710"/>
+        <line x1="470" y1="745" x2="1000" y2="745"/>
+      </g>
+      <!-- 圆形图 -->
+      <circle cx="930" cy="600" r="52" fill="none" stroke-width="6"/>
+      <path d="M 930 600 L 930 560 A 40 40 0 0 1 965 615 Z" fill="#E8654F" stroke-width="5"/>
+    </g>
+
+    <!-- 咖啡杯 -->
+    <g>
+      <path d="M 1240 700 q -8 90 60 90 q 68 0 60 -90 Z" fill="#F5EFDD" stroke-width="8"/>
+      <path d="M 1360 720 q 50 8 40 50 q -8 34 -50 30" fill="none" stroke-width="8"/>
+      <path d="M 1268 668 q 10 -24 0 -44 q -10 -20 0 -40" fill="none" stroke="#F5EFDD" stroke-width="7"/>
+      <path d="M 1308 668 q 10 -24 0 -44 q -10 -20 0 -40" fill="none" stroke="#F5EFDD" stroke-width="7"/>
+    </g>
+
+    <!-- 星星与斜点 -->
+    <path d="M 240 220 l 7 24 l 24 7 l -24 7 l -7 24 l -7 -24 l -24 -7 l 24 -7 Z" fill="#F2B705" stroke-width="5"/>
+    <circle cx="200" cy="440" r="10" fill="#E8654F" stroke-width="5"/>
+    <circle cx="1460" cy="560" r="14" fill="#2E9E96" stroke-width="5"/>
+    <path d="M 1500 820 l 5 18 l 18 5 l -18 5 l -5 18 l -5 -18 l -18 -5 l 18 -5 Z" fill="#F5EFDD" stroke-width="4"/>
+  </g>
+</svg>

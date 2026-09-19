@@ -12,7 +12,7 @@
 nav:
   # Navigation bar logo image
   logo:
-  display_title: true
+  display_title: false
   display_post_title: true
   # Whether to fix navigation bar
   fixed: false
@@ -53,20 +53,20 @@ social:
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.png
+favicon: /img/me-favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/me.png
   effect: false
 
 # Disable all banner images
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img:
+default_top_img: /img/art-night.svg
 
 # The banner image of index page
-index_img:
+index_img: /img/art-tv.svg
 
 # The banner image of archive page
 archive_img:
@@ -93,7 +93,7 @@ footer_img: false
 # Website Background
 # Can set it to color, image URL or an array containing colors and/or image URLs
 # If an array is provided, a random background will be selected from the array on each load
-background:
+background: '#1B2440'
 
 cover:
   # Disable the cover or not
@@ -149,7 +149,7 @@ index_top_img_height:
 
 # The subtitle on homepage
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect
   effect: true
   # Customize typed.js
@@ -165,6 +165,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
+    - 欢迎收看今晚的技术播报
+    - 代码 · 踩坑 · 现场直击
+    - ON AIR · 持续更新中
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -380,9 +383,9 @@ readmode: true
 
 # Dark Mode
 darkmode:
-  enable: true
+  enable: false
   # Toggle Button to switch dark/light mode
-  button: true
+  button: false
   # Switch dark/light mode automatically
   # autoChangeMode: 1  Following System Settings, if the system doesn't support dark mode, it will switch dark mode between 6 pm to 6 am
   # autoChangeMode: 2  Switch dark mode between 6 pm to 6 am
@@ -1057,9 +1060,10 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - <link rel="stylesheet" href="/css/broadcast.css">
   bottom:
-    # - <script src="xxxx"></script>
+    # 深夜播报舞台：开场手绘拼贴，滚动后交叉淡入单张固定背景+磨砂玻璃
+    - <script>(function(){function i(){var h=document.querySelector('#page-header');if(!h||document.querySelector('.so-stage'))return;var s=document.createElement('div');s.className='so-stage';s.setAttribute('aria-hidden','true');var single='<div class="so-art" style="background-image:url(/img/photo-scene.webp)"></div>';if(h.classList.contains('full_page')){s.classList.add('has-tiles');s.innerHTML='<div class="so-tiles"><div style="background-image:url(/img/photo-cinema.webp)"></div><div style="background-image:url(/img/photo-snow.webp)"></div><div style="background-image:url(/img/photo-commute.webp)"></div><div style="background-image:url(/img/photo-work.webp)"></div><div style="background-image:url(/img/photo-dunhuang.webp)"></div></div>'+single;}else{s.innerHTML=single;}document.body.insertBefore(s,document.body.firstChild);document.body.classList.add('so-stage-on');var f=function(){var t=Math.min(1,scrollY/(innerHeight*.5));s.style.setProperty('--so-frost',t)};addEventListener('scroll',f,{passive:true});f()}document.readyState==='loading'?document.addEventListener('DOMContentLoaded',i):i()})();</script>
 
 # CDN Settings
 # Don't modify the following settings unless you know how they work

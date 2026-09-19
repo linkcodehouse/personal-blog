@@ -1,0 +1,543 @@
+/* ============================================================
+   「深夜播报」手绘新闻插画风皮肤 for Butterfly 5.7
+   气质参考：手绘新闻播报 PPT 模板 —— 藏青演播室 + 奶油纸板
+   青绿/珊瑚/暖金点缀 + 厚描边 + 半调网点 + 放射线
+   通过 inject 引入，不改动主题包，升级主题不丢失
+   ============================================================ */
+
+/* ---------- 字体（本地托管，无外部依赖） ---------- */
+@font-face { font-family: 'Alexandria'; src: url('/fonts/Alexandria-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Alexandria'; src: url('/fonts/Alexandria-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Alexandria'; src: url('/fonts/Alexandria-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Alexandria'; src: url('/fonts/Alexandria-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Alexandria'; src: url('/fonts/Alexandria-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/PlayfairDisplay-var.woff2') format('woff2');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- 设计令牌：藏青演播室 × 奶油纸板 ---------- */
+:root {
+  --bc-navy: #1B2440;         /* 演播室深蓝 */
+  --bc-navy-deep: #141B31;
+  --bc-cream: #F5EFDD;        /* 奶油纸板 */
+  --bc-cream-soft: #FBF7EA;
+  --bc-teal: #2E9E96;         /* 青绿 */
+  --bc-coral: #E8654F;        /* 珊瑚 */
+  --bc-gold: #F2B705;         /* 暖金 */
+  --bc-ink: #12182B;          /* 纸板上的墨 */
+  --bc-ink-soft: #4A5268;
+  --bc-serif: 'Playfair Display', Georgia, 'Songti SC', 'STSong', 'SimSun', serif;
+  --bc-spring: cubic-bezier(.34, 1.3, .64, 1);
+  --bc-ease: cubic-bezier(.22, .61, .36, 1);
+  --bc-shadow: 4px 4px 0 rgba(18, 24, 43, .9);
+  --bc-shadow-hover: 8px 8px 0 rgba(18, 24, 43, .9);
+  --bc-radius: 14px;
+  --bc-hairline: 2px solid var(--bc-ink);
+  --global-font: 'Alexandria', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-color: #2A3148;
+  --card-bg: var(--bc-cream-soft);
+  --search-bg: var(--bc-cream-soft);
+  --nav-bg: var(--bc-cream);
+}
+
+/* ---------- 基础：html 承载藏青底，body 让位给固定舞台 ---------- */
+html { background: var(--bc-navy) !important; }
+html, body {
+  font-family: var(--global-font) !important;
+  color: #2A3148;
+}
+body { background: var(--bc-navy); }
+body.so-stage-on { background: transparent !important; }
+::selection { background: var(--bc-gold); color: var(--bc-ink); }
+
+/* ============================================================
+   固定背景舞台：开场拼贴 → 滚动后交叉淡入单张 + 磨砂玻璃
+   ============================================================ */
+.so-stage {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--bc-navy);
+  overflow: hidden;
+}
+.so-stage .so-art {
+  position: absolute;
+  inset: -4%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(calc(1 + var(--so-frost, 0) * .045));
+  filter: blur(calc(var(--so-frost, 0) * 7px)) saturate(calc(1 - var(--so-frost, 0) * .15)) brightness(calc(1 - var(--so-frost, 0) * .05));
+}
+.so-stage.has-tiles .so-art {
+  opacity: clamp(0, calc((var(--so-frost, 0) - .16) / .38), 1);
+}
+.so-stage .so-tiles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.18fr .92fr .9fr;
+  grid-template-rows: 1.05fr .95fr;
+  gap: 10px;
+  padding: 0 10px 10px;
+  opacity: clamp(0, calc(1 - (var(--so-frost, 0) - .16) / .38), 1);
+}
+.so-stage .so-tiles > div {
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  animation: bc-tile-in 1s var(--bc-ease) both;
+}
+/* 5 图块：人生放映左通高，右侧 2x2 = 雪山/公交/工作/敦煌 */
+.so-stage .so-tiles > div:nth-child(1) { grid-row: 1 / 3; animation-delay: 0s; }
+.so-stage .so-tiles > div:nth-child(2) { animation-delay: .08s; }
+.so-stage .so-tiles > div:nth-child(3) { animation-delay: .16s; }
+.so-stage .so-tiles > div:nth-child(4) { animation-delay: .24s; }
+.so-stage .so-tiles > div:nth-child(5) { animation-delay: .32s; }
+@keyframes bc-tile-in { from { opacity: 0; transform: scale(1.05) rotate(.4deg); } to { opacity: 1; transform: none; } }
+
+/* 舞台启用后：主题头图隐藏，内容区变奶油磨砂玻璃 */
+body.so-stage-on #page-header {
+  background: transparent !important;
+  background-image: none !important;
+}
+body.so-stage-on #page-header::before {
+  background: linear-gradient(to bottom, rgba(18, 24, 43, .42) 0%, rgba(18, 24, 43, .12) 45%, rgba(18, 24, 43, .5) 100%) !important;
+}
+body.so-stage-on #content-outer {
+  position: relative;
+  z-index: 1;
+  background: rgba(245, 239, 221, .6);
+  backdrop-filter: blur(20px) saturate(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(1.05);
+  border-radius: 26px 26px 0 0;
+  box-shadow: 0 -18px 52px rgba(10, 14, 26, .35);
+}
+body.so-stage-on #footer {
+  background: rgba(245, 239, 221, .78) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ============================================================
+   开场标题：报头气质
+   ============================================================ */
+#page-header.full_page { height: 100vh !important; }
+#site-info { position: relative; z-index: 2; }
+#site-info::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 140%; height: 160%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(18, 24, 43, .55) 0%, rgba(18, 24, 43, .3) 55%, transparent 78%);
+  z-index: -1;
+}
+#site-info #site-title {
+  font-family: var(--bc-serif) !important;
+  color: var(--bc-cream) !important;
+  font-size: clamp(2.6rem, 7vw, 5rem) !important;
+  font-weight: 800;
+  letter-spacing: .03em;
+  line-height: 1.15;
+  text-shadow: 0 4px 28px rgba(10, 14, 26, .65);
+  animation: bc-rise .8s var(--bc-ease) .15s both;
+}
+/* 手绘波浪下划线（青绿） */
+#site-info #site-title::after {
+  content: '';
+  display: block;
+  width: 88px; height: 10px;
+  margin: .5em auto 0;
+  background: repeating-linear-gradient(90deg, var(--bc-teal) 0 14px, transparent 14px 22px);
+  border-radius: 6px;
+  opacity: .9;
+}
+#site-subtitle { margin-top: 1.2rem; animation: bc-rise .8s var(--bc-ease) .3s both; }
+#site-subtitle span,
+#site-subtitle #subtitle {
+  display: inline-block;
+  background: rgba(18, 24, 43, .5);
+  border: 2px dashed rgba(245, 239, 221, .8);
+  border-radius: 999px;
+  padding: .4em 1.5em;
+  color: var(--bc-cream);
+  letter-spacing: .28em;
+  font-size: .92rem;
+  font-weight: 500;
+}
+.scroll-down { border-color: rgba(245, 239, 221, .75) !important; z-index: 2; }
+.scroll-down .scroll-down-effects i, .scroll-down i { color: var(--bc-cream) !important; }
+
+/* ---------- 导航：奶油胶囊 + 墨描边 ---------- */
+#nav {
+  position: fixed !important;
+  z-index: 100 !important;
+  top: 14px !important;
+  left: 16px !important;
+  right: 16px !important;
+  width: auto !important;
+  background: var(--bc-cream) !important;
+  border: 2.5px solid var(--bc-ink) !important;
+  border-radius: 999px !important;
+  box-shadow: var(--bc-shadow);
+  animation: bc-rise .7s var(--bc-ease) both;
+}
+#nav .toggle-menu, #nav #search-button, #nav .site-page, #nav .menus_name span {
+  color: var(--bc-ink) !important;
+}
+#nav .nav-site-title .site-name,
+#nav .site-name {
+  font-family: var(--bc-serif) !important;
+  color: var(--bc-ink) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700;
+}
+#nav .nav-site-title .site-name::first-letter,
+#nav .site-name::first-letter { color: var(--bc-coral); }
+.menus_item a.site-page {
+  position: relative;
+  border-radius: 6px;
+  padding: .3em .8em;
+  transition: color .2s var(--bc-ease);
+}
+.menus_item a.site-page::after {
+  content: '';
+  position: absolute;
+  left: 16%; right: 16%; bottom: 2px;
+  height: 3px;
+  background: var(--bc-teal);
+  border-radius: 3px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .28s var(--bc-ease);
+}
+.menus_item a.site-page:hover { color: var(--bc-teal) !important; }
+.menus_item a.site-page:hover::after,
+.menus_item a.site-page.active::after { transform: scaleX(1); }
+.menus_item a.site-page.active { color: var(--bc-ink) !important; }
+
+/* ============================================================
+   内容区组件：奶油纸板卡片 + 厚墨描边 + 硬投影（手绘印刷感）
+   ============================================================ */
+@keyframes bc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 首页文章卡片 ---------- */
+#recent-posts .recent-post-item {
+  position: relative;
+  background: var(--bc-cream-soft) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: var(--bc-radius) !important;
+  box-shadow: var(--bc-shadow) !important;
+  transition: box-shadow .25s var(--bc-ease), transform .25s var(--bc-spring) !important;
+  overflow: hidden;
+  margin-top: 1.4rem !important;
+  animation: bc-rise .6s var(--bc-ease) both;
+}
+#recent-posts .recent-post-item:nth-child(2) { animation-delay: .08s; }
+#recent-posts .recent-post-item:nth-child(3) { animation-delay: .16s; }
+#recent-posts .recent-post-item:nth-child(4) { animation-delay: .24s; }
+/* 珊瑚圆形贴纸（右上角） */
+#recent-posts .recent-post-item::after {
+  content: '';
+  position: absolute;
+  top: -8px; right: 26px;
+  width: 18px; height: 18px;
+  background: var(--bc-coral);
+  border: 2px solid var(--bc-ink);
+  border-radius: 50%;
+  z-index: 2;
+}
+#recent-posts .recent-post-item:hover {
+  box-shadow: var(--bc-shadow-hover) !important;
+  transform: translate(-2px, -2px);
+}
+.recent-post-info .article-title,
+.recent-post-info .article-title a {
+  color: var(--bc-ink) !important;
+  font-weight: 700;
+}
+.recent-post-info .article-title a:hover { color: var(--bc-teal) !important; }
+.recent-post-info .content,
+.recent-post-info .article-meta,
+.recent-post-info .article-meta a { color: var(--bc-ink-soft) !important; }
+
+/* ---------- 侧栏卡片 ---------- */
+#aside-content .card-widget,
+#aside-content .card-info,
+#aside-content .card-announcement {
+  background: var(--bc-cream-soft) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: var(--bc-radius) !important;
+  box-shadow: var(--bc-shadow) !important;
+  margin-top: 1.4rem;
+  animation: bc-rise .6s var(--bc-ease) .3s both;
+}
+/* 戴夫头像：奶油底 + 墨描边 + 金色描画框 */
+.card-info img.avatar-img {
+  border: 3px solid var(--bc-ink) !important;
+  outline: 3px solid var(--bc-gold);
+  outline-offset: -8px;
+  border-radius: 12px !important;
+  box-shadow: var(--bc-shadow);
+  transition: transform .35s var(--bc-spring);
+}
+.card-info img.avatar-img:hover { transform: scale(1.05) rotate(-2deg); }
+.item-headline { color: var(--bc-ink); font-weight: 700; }
+#aside-content .card-widget:nth-of-type(1) .item-headline i { color: var(--bc-coral); }
+#aside-content .card-widget:nth-of-type(2) .item-headline i { color: var(--bc-teal); }
+#aside-content .card-widget:nth-of-type(3) .item-headline i { color: var(--bc-gold); }
+#aside-content .card-widget:nth-of-type(4) .item-headline i { color: var(--bc-coral); }
+#aside-content .aside-list-item .content a { color: var(--bc-ink); transition: color .2s; }
+#aside-content .aside-list-item .content a:hover { color: var(--bc-teal); }
+#aside-content .card-info .card-info-btn,
+#aside-content .btn-grad {
+  background: var(--bc-teal) !important;
+  border: 2px solid var(--bc-ink) !important;
+  border-radius: 10px !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .9);
+  color: var(--bc-cream) !important;
+  background-image: none !important;
+  transition: all .22s var(--bc-ease);
+}
+#aside-content .card-info .card-info-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 rgba(18, 24, 43, .9);
+  background: #23827b !important;
+}
+
+/* ---------- 分页 ---------- */
+#pagination .pagination { background: transparent; }
+#pagination .pagination > * {
+  background: var(--bc-cream-soft) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: 999px !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .85);
+  color: var(--bc-ink) !important;
+  margin: 0 5px;
+  font-weight: 600;
+  transition: all .2s var(--bc-ease);
+}
+#pagination .pagination > a:hover,
+#pagination .pagination > .page-number:hover {
+  background: var(--bc-gold) !important;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgba(18, 24, 43, .85);
+}
+#pagination .pagination .current { background: var(--bc-coral) !important; color: var(--bc-cream) !important; }
+#pagination .pagination input {
+  border: var(--bc-hairline) !important;
+  border-radius: 999px !important;
+}
+
+/* ---------- 文章正文 ---------- */
+#post .post-title,
+#page .post-title {
+  color: var(--bc-cream) !important;
+  font-family: var(--bc-serif);
+  text-shadow: 0 3px 22px rgba(10, 14, 26, .7);
+}
+#post-info .post-title::after {
+  content: '';
+  display: block;
+  width: 64px; height: 8px;
+  margin: .45em 0 0;
+  background: repeating-linear-gradient(90deg, var(--bc-teal) 0 10px, transparent 10px 16px);
+  border-radius: 5px;
+}
+#post .post-meta, #post .post-meta a { color: rgba(245, 239, 221, .88) !important; }
+
+#article-container { font-size: 1.05em; }
+#article-container h1, #article-container h2, #article-container h3 {
+  color: var(--bc-ink);
+  font-family: var(--bc-serif);
+  font-weight: 700;
+}
+/* 章节标题：珊瑚短竖线 + 手绘感 */
+#article-container h2::before,
+#article-container h3::before {
+  content: '';
+  display: inline-block;
+  width: 5px; height: .85em;
+  background: var(--bc-coral);
+  border-radius: 3px;
+  margin-right: 12px;
+  vertical-align: -0.08em;
+}
+#article-container a:not(.fancybox) {
+  color: var(--bc-teal);
+  border-bottom: 2px solid rgba(46, 158, 150, .4);
+  transition: color .18s var(--bc-ease), border-color .18s var(--bc-ease), background .18s var(--bc-ease);
+}
+#article-container a:not(.fancybox):hover {
+  color: var(--bc-coral);
+  border-bottom-color: var(--bc-coral);
+  background: rgba(232, 101, 79, .08);
+  border-radius: 3px;
+}
+/* 行内代码：暖金纸条 */
+#article-container code {
+  background: #F7EBCE !important;
+  border: 1.5px solid rgba(18, 24, 43, .35);
+  border-radius: 6px;
+  padding: .1em .4em;
+  color: #9C4A1A !important;
+}
+/* 引用块：虚线手绘便签 */
+#article-container blockquote {
+  background: var(--bc-cream) !important;
+  border: 2px dashed rgba(18, 24, 43, .5) !important;
+  border-left: 6px solid var(--bc-gold) !important;
+  border-radius: 10px !important;
+  color: var(--bc-ink-soft) !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .55);
+}
+#article-container img {
+  border: 2px solid var(--bc-ink);
+  border-radius: 10px;
+  box-shadow: var(--bc-shadow);
+  transition: transform .3s var(--bc-spring);
+}
+#article-container img:hover { transform: translate(-2px, -2px); }
+#article-container table {
+  border: var(--bc-hairline) !important;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .6);
+}
+#article-container th {
+  background: var(--bc-gold) !important;
+  border: 1.5px solid rgba(18, 24, 43, .4) !important;
+  color: var(--bc-ink) !important;
+}
+#article-container td { border: 1.5px solid rgba(18, 24, 43, .25) !important; }
+#article-container hr {
+  border: none !important;
+  border-top: 2px dashed rgba(18, 24, 43, .45) !important;
+  background: transparent !important;
+}
+#article-container figure.highlight {
+  border: var(--bc-hairline) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--bc-shadow);
+  overflow: hidden;
+}
+#article-container figure.highlight .highlight-tools {
+  background: #F0E6CC !important;
+  color: var(--bc-ink-soft) !important;
+  border-bottom: 2px solid rgba(18, 24, 43, .4) !important;
+}
+#article-container figure.highlight table,
+#article-container figure.highlight td { border: none !important; }
+
+.post-copyright {
+  background: #E7F2F0 !important;
+  border: var(--bc-hairline) !important;
+  border-radius: 12px !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .55);
+  overflow: hidden;
+}
+.post-copyright .post-copyright-meta { color: #1F7A73 !important; }
+.post-copyright .post-copyright-info a { color: #1F7A73; }
+
+#post .post-nav .prev-post, #post .post-nav .next-post {
+  background: var(--bc-cream-soft) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--bc-shadow);
+  transition: all .22s var(--bc-ease);
+}
+#post .post-nav .prev-post:hover, #post .post-nav .next-post:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--bc-shadow-hover);
+}
+
+/* ---------- 归档 / 标签 / 分类页 ---------- */
+.article-sort-item,
+.category-lists .category-list li,
+.tag-cloud-list a {
+  background: var(--bc-cream-soft) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: 12px !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .7);
+  transition: all .2s var(--bc-ease);
+}
+.article-sort-item { margin-bottom: .9rem !important; }
+.article-sort-item:hover,
+.tag-cloud-list a:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(18, 24, 43, .7);
+}
+.article-sort-item-title, .article-sort-item-time { color: var(--bc-ink) !important; }
+/* 标签：青绿/珊瑚/金/奶油 循环 */
+.tag-cloud-list a:nth-child(4n+1) { background: #D9EEEB !important; }
+.tag-cloud-list a:nth-child(4n+2) { background: #F9DCD4 !important; }
+.tag-cloud-list a:nth-child(4n+3) { background: #FAEDC8 !important; }
+.tag-cloud-list a:nth-child(4n+4) { background: var(--bc-cream) !important; }
+.tag-cloud-list a { color: var(--bc-ink) !important; font-weight: 600; }
+.category-lists .category-list a { color: var(--bc-ink) !important; }
+
+/* ---------- 页脚 ---------- */
+#footer { border-top: 2px solid rgba(18, 24, 43, .3); }
+#footer-wrap, #footer-wrap a { color: var(--bc-ink-soft) !important; }
+#footer-wrap a:hover { color: var(--bc-coral) !important; }
+
+/* ---------- 右下角悬浮按钮 ---------- */
+#rightside > div > button,
+#rightside #rightside-config-hide button,
+#rightside #rightside-config-show button {
+  background: var(--bc-cream) !important;
+  border: 2px solid var(--bc-ink) !important;
+  border-radius: 10px !important;
+  box-shadow: 3px 3px 0 rgba(18, 24, 43, .8);
+  color: var(--bc-ink) !important;
+  transition: all .2s var(--bc-ease);
+}
+#rightside button:hover {
+  background: var(--bc-gold) !important;
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 rgba(18, 24, 43, .8);
+}
+
+/* ---------- 本地搜索弹窗 ---------- */
+#search-mask { background: rgba(10, 14, 26, .55) !important; backdrop-filter: blur(3px); }
+#local-search .search-dialog,
+#algolia-search .search-dialog {
+  border: var(--bc-hairline) !important;
+  border-radius: 18px !important;
+  box-shadow: 10px 10px 0 rgba(18, 24, 43, .8) !important;
+  background: var(--bc-cream-soft) !important;
+}
+#local-search .search-dialog-title,
+#local-search .search-close-button { color: var(--bc-ink) !important; }
+#local-search .local-search-box input {
+  background: var(--bc-cream) !important;
+  border: var(--bc-hairline) !important;
+  border-radius: 10px !important;
+  color: var(--bc-ink);
+}
+#local-search .search-result .search-result-title { color: var(--bc-ink) !important; }
+#local-search .search-result .search-result-content { color: var(--bc-ink-soft); }
+
+/* ---------- 移动端适配 ---------- */
+@media screen and (max-width: 768px) {
+  #page-header.full_page { height: 88vh !important; }
+  .so-stage .so-tiles { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 6px; }
+  .so-stage .so-tiles > div:nth-child(1) { grid-row: auto; }
+  body.so-stage-on #content-outer {
+    backdrop-filter: blur(14px) saturate(1.05);
+    -webkit-backdrop-filter: blur(14px) saturate(1.05);
+    border-radius: 18px 18px 0 0;
+  }
+  #nav { left: 10px !important; right: 10px !important; top: 8px !important; }
+  #recent-posts .recent-post-item:hover,
+  .tag-cloud-list a:hover { transform: none; }
+}
+
+/* 无障碍：用户偏好减少动画时全部关闭 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

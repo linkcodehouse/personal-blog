@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1600" preserveAspectRatio="xMidYMid slice">
+  <!-- 「演播室之夜」· 手绘播报风：老式电视+ON AIR 灯牌+信号波 -->
+  <defs>
+    <pattern id="ht" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="13" cy="13" r="3" fill="#F5EFDD" opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1600" fill="#1B2440"/>
+  <rect width="1000" height="1600" fill="url(#ht)"/>
+
+  <g stroke="#12182B" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 放射装饰线 -->
+    <g stroke="#2E9E96" stroke-width="6" opacity=".55">
+      <line x1="180" y1="120" x2="120" y2="60"/>
+      <line x1="270" y1="90" x2="240" y2="20"/>
+      <line x1="800" y1="130" x2="860" y2="70"/>
+      <line x1="700" y1="100" x2="730" y2="30"/>
+    </g>
+
+    <!-- ON AIR 灯牌 -->
+    <g>
+      <rect x="270" y="180" width="460" height="150" rx="26" fill="#E8654F" stroke-width="9"/>
+      <rect x="290" y="200" width="420" height="110" rx="18" fill="none" stroke="#F5EFDD" stroke-width="5" stroke-dasharray="18 14"/>
+      <text x="500" y="282" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#F5EFDD" text-anchor="middle" letter-spacing="6" stroke="none">ON AIR</text>
+    </g>
+
+    <!-- 老式电视 -->
+    <g>
+      <line x1="420" y1="620" x2="320" y2="460" stroke="#F5EFDD" stroke-width="12"/>
+      <line x1="580" y1="620" x2="680" y2="460" stroke="#F5EFDD" stroke-width="12"/>
+      <circle cx="320" cy="450" r="16" fill="#F2B705" stroke-width="6"/>
+      <circle cx="680" cy="450" r="16" fill="#F2B705" stroke-width="6"/>
+      <rect x="170" y="610" width="660" height="520" rx="40" fill="#F5EFDD" stroke-width="10"/>
+      <rect x="220" y="660" width="400" height="330" rx="18" fill="#2E9E96" stroke-width="8"/>
+      <!-- 屏幕内容：手绘信号波 -->
+      <path d="M 250 830 q 40 -90 80 0 q 40 90 80 0 q 40 -90 80 0 q 40 90 80 0" fill="none" stroke="#F5EFDD" stroke-width="8"/>
+      <!-- 旋钮与喇叭 -->
+      <circle cx="690" cy="700" r="26" fill="#F2B705" stroke-width="7"/>
+      <circle cx="690" cy="780" r="26" fill="#E8654F" stroke-width="7"/>
+      <g stroke-width="6">
+        <line x1="665" y1="860" x2="775" y2="860"/>
+        <line x1="665" y1="890" x2="775" y2="890"/>
+        <line x1="665" y1="920" x2="775" y2="920"/>
+      </g>
+      <!-- 电视脚 -->
+      <line x1="300" y1="1130" x2="270" y2="1190" stroke-width="12"/>
+      <line x1="700" y1="1130" x2="730" y2="1190" stroke-width="12"/>
+    </g>
+
+    <!-- 星星与火花 -->
+    <path d="M 180 1320 l 8 26 l 26 8 l -26 8 l -8 26 l -8 -26 l -26 -8 l 26 -8 Z" fill="#F2B705" stroke-width="6"/>
+    <path d="M 760 1400 l 6 20 l 20 6 l -20 6 l -6 20 l -6 -20 l -20 -6 l 20 -6 Z" fill="#F5EFDD" stroke-width="5"/>
+    <path d="M 840 900 q 10 -14 24 -8" fill="none" stroke="#F2B705" stroke-width="6"/>
+
+    <!-- 手绘波浪地平线 -->
+    <path d="M 60 1500 q 80 -30 160 0 q 80 30 160 0 q 80 -30 160 0 q 80 30 160 0 q 80 -30 160 0 q 80 30 160 0" fill="none" stroke="#2E9E96" stroke-width="7" opacity=".6"/>
+  </g>
+</svg>

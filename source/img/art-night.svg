@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- 「深夜演播厅」· 单张固定背景：静谧藏青+聚光柔晕+半调+放射线，磨砂后作底纹 -->
+  <defs>
+    <radialGradient id="spot" cx=".5" cy=".36" r=".65">
+      <stop offset="0" stop-color="#2A3860"/>
+      <stop offset=".55" stop-color="#1E2A4A"/>
+      <stop offset="1" stop-color="#141B31"/>
+    </radialGradient>
+    <pattern id="htn" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="13" cy="13" r="2.6" fill="#F5EFDD" opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#spot)"/>
+  <rect width="1600" height="1000" fill="url(#htn)"/>
+
+  <!-- 聚光灯锥 -->
+  <polygon points="700,0 900,0 1240,760 360,760" fill="#F5EFDD" opacity=".045"/>
+  <circle cx="800" cy="380" r="200" fill="#F5EFDD" opacity=".05"/>
+
+  <!-- 放射线（低透明度） -->
+  <g stroke="#2E9E96" stroke-width="5" opacity=".35">
+    <line x1="800" y1="380" x2="560" y2="150"/>
+    <line x1="800" y1="380" x2="1040" y2="150"/>
+    <line x1="800" y1="380" x2="420" y2="320"/>
+    <line x1="800" y1="380" x2="1180" y2="320"/>
+    <line x1="800" y1="380" x2="400" y2="560"/>
+    <line x1="800" y1="380" x2="1200" y2="560"/>
+  </g>
+
+  <!-- 星点 -->
+  <g fill="#F5EFDD" opacity=".5">
+    <circle cx="240" cy="180" r="4"/>
+    <circle cx="1380" cy="220" r="5"/>
+    <circle cx="1500" cy="700" r="4"/>
+    <circle cx="140" cy="720" r="4"/>
+    <circle cx="640" cy="820" r="4"/>
+    <circle cx="1020" cy="860" r="5"/>
+  </g>
+
+  <!-- 四芒星点缀 -->
+  <path d="M 320 520 l 5 17 l 17 5 l -17 5 l -5 17 l -5 -17 l -17 -5 l 17 -5 Z" fill="#F2B705" opacity=".5"/>
+  <path d="M 1250 640 l 5 17 l 17 5 l -17 5 l -5 17 l -5 -17 l -17 -5 l 17 -5 Z" fill="#E8654F" opacity=".45"/>
+
+  <!-- 底部波浪 -->
+  <path d="M 0 930 q 100 -22 200 0 q 100 22 200 0 q 100 -22 200 0 q 100 22 200 0 q 100 -22 200 0 q 100 22 200 0 q 100 -22 200 0 q 100 22 200 0" fill="none" stroke="#2E9E96" stroke-width="6" opacity=".4"/>
+</svg>

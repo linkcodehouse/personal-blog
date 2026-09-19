@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- 「新闻跑马灯」· 手绘播报风：胶带+纸飞机+跑马灯带 -->
+  <defs>
+    <pattern id="ht4" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="2.4" fill="#F5EFDD" opacity=".1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#1B2440"/>
+  <rect width="1600" height="1000" fill="url(#ht4)"/>
+
+  <g stroke="#12182B" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 纸飞机与航迹 -->
+    <g>
+      <path d="M 820 260 L 1160 180 L 1000 360 Z" fill="#F5EFDD" stroke-width="8"/>
+      <path d="M 1000 360 L 960 250 L 820 260" fill="#2E9E96" stroke-width="7"/>
+      <path d="M 420 300 q 120 -60 260 -20" fill="none" stroke="#F5EFDD" stroke-width="6" stroke-dasharray="2 26" opacity=".8"/>
+    </g>
+
+    <!-- 胶带贴纸卡 -->
+    <g transform="rotate(4 400 520)">
+      <rect x="240" y="420" width="320" height="200" rx="14" fill="#F2B705" stroke-width="8"/>
+      <rect x="360" y="394" width="120" height="44" rx="8" fill="#F5EFDD" opacity=".85" stroke-width="5" transform="rotate(-6 420 416)"/>
+      <g stroke-width="6">
+        <line x1="285" y1="490" x2="515" y2="490"/>
+        <line x1="285" y1="530" x2="490" y2="530"/>
+        <line x1="285" y1="570" x2="470" y2="570"/>
+      </g>
+    </g>
+
+    <!-- 星尘 -->
+    <path d="M 140 220 l 6 20 l 20 6 l -20 6 l -6 20 l -6 -20 l -20 -6 l 20 -6 Z" fill="#F2B705" stroke-width="5"/>
+    <path d="M 1460 420 l 6 20 l 20 6 l -20 6 l -6 20 l -6 -20 l -20 -6 l 20 -6 Z" fill="#F5EFDD" stroke-width="4"/>
+    <circle cx="700" cy="460" r="9" fill="#E8654F" stroke-width="4"/>
+    <circle cx="1300" cy="240" r="12" fill="#2E9E96" stroke-width="5"/>
+
+    <!-- 跑马灯带 -->
+    <g>
+      <rect x="0" y="700" width="1600" height="130" fill="#E8654F" stroke-width="0"/>
+      <line x1="0" y1="700" x2="1600" y2="700" stroke="#F5EFDD" stroke-width="6"/>
+      <line x1="0" y1="830" x2="1600" y2="830" stroke="#F5EFDD" stroke-width="6"/>
+      <text x="80" y="782" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#F5EFDD" letter-spacing="2" stroke="none">★ BREAKING ★ CODE ★ LIFE ★ TIPS ★ DEBUG ★</text>
+    </g>
+
+    <!-- 底部手绘波浪 -->
+    <path d="M 40 920 q 60 -24 120 0 q 60 24 120 0 q 60 -24 120 0 q 60 24 120 0 q 60 -24 120 0 q 60 24 120 0 q 60 -24 120 0 q 60 24 120 0 q 60 -24 120 0 q 60 24 120 0 q 60 -24 120 0 q 60 24 120 0" fill="none" stroke="#2E9E96" stroke-width="7" opacity=".6"/>
+  </g>
+</svg>

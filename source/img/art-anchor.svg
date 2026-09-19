@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- 「晚间主播」· 手绘播报风：卡通主播+播报台+LIVE 标 -->
+  <defs>
+    <pattern id="ht5" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="11" cy="11" r="2.6" fill="#F5EFDD" opacity=".1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="#1B2440"/>
+  <rect width="1600" height="1000" fill="url(#ht5)"/>
+
+  <g stroke="#12182B" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- 主播身后放射线 -->
+    <g stroke="#2E9E96" stroke-width="7" opacity=".65">
+      <line x1="800" y1="430" x2="580" y2="210"/>
+      <line x1="800" y1="430" x2="800" y2="150"/>
+      <line x1="800" y1="430" x2="1020" y2="210"/>
+      <line x1="800" y1="430" x2="500" y2="330"/>
+      <line x1="800" y1="430" x2="1100" y2="330"/>
+    </g>
+
+    <!-- 摄像机（右侧） -->
+    <g>
+      <rect x="1180" y="360" width="180" height="120" rx="18" fill="#F5EFDD" stroke-width="8"/>
+      <path d="M 1360 400 L 1460 360 L 1460 480 L 1360 440 Z" fill="#2E9E96" stroke-width="8"/>
+      <circle cx="1226" cy="420" r="26" fill="#E8654F" stroke-width="7"/>
+      <rect x="1216" y="480" width="44" height="110" rx="10" fill="#F2B705" stroke-width="7"/>
+      <path d="M 1238 590 L 1238 700 M 1238 640 L 1330 700 M 1238 640 L 1150 700" fill="none" stroke="#F5EFDD" stroke-width="9"/>
+      <circle cx="1276" cy="332" r="10" fill="#E8654F" stroke-width="5"/>
+    </g>
+
+    <!-- 主播 -->
+    <g>
+      <!-- 身体（青绿西装） -->
+      <path d="M 620 760 q 10 -130 90 -170 q 40 -20 90 0 q 90 40 90 170 Z" fill="#2E9E96" stroke-width="9"/>
+      <!-- 衬衫领 -->
+      <path d="M 740 600 L 800 660 L 860 600 L 860 570 L 740 570 Z" fill="#F5EFDD" stroke-width="7"/>
+      <!-- 珊瑚领带 -->
+      <path d="M 794 660 l 6 -12 l 12 26 l -12 60 l -12 -60 Z" fill="#E8654F" stroke-width="6"/>
+      <!-- 举纸稿的手臂 -->
+      <path d="M 640 680 q -70 -30 -60 -110" fill="none" stroke="#2E9E96" stroke-width="26"/>
+      <path d="M 640 680 q -70 -30 -60 -110" fill="none" stroke="#12182B" stroke-width="32" opacity="0" />
+      <circle cx="580" cy="556" r="24" fill="#F2C9A0" stroke-width="7"/>
+      <g>
+        <rect x="440" y="420" width="200" height="140" rx="8" fill="#F5EFDD" stroke-width="7" transform="rotate(-10 540 490)"/>
+        <g stroke-width="5" transform="rotate(-10 540 490)">
+          <line x1="470" y1="455" x2="610" y2="455"/>
+          <line x1="470" y1="485" x2="600" y2="485"/>
+          <line x1="470" y1="515" x2="590" y2="515"/>
+        </g>
+      </g>
+      <!-- 头 -->
+      <circle cx="800" cy="440" r="118" fill="#F2C9A0" stroke-width="9"/>
+      <!-- 头发 -->
+      <path d="M 686 420 q 4 -102 114 -102 q 110 0 114 102 q -30 -34 -64 -22 q -24 -30 -58 -16 q -34 -18 -56 12 q -30 -8 -50 26 Z" fill="#4A3222" stroke-width="8"/>
+      <!-- 眼睛（认真播报的豆豆眼） -->
+      <circle cx="762" cy="440" r="13" fill="#12182B"/>
+      <circle cx="838" cy="440" r="13" fill="#12182B"/>
+      <!-- 眉毛 -->
+      <path d="M 742 408 q 20 -12 40 -2" fill="none" stroke-width="7"/>
+      <path d="M 818 406 q 20 -10 40 2" fill="none" stroke-width="7"/>
+      <!-- 张嘴播报 -->
+      <path d="M 766 496 q 34 26 68 0 q -12 30 -34 30 q -22 0 -34 -30 Z" fill="#E8654F" stroke-width="6"/>
+      <!-- 腮红 -->
+      <circle cx="724" cy="478" r="10" fill="#E8654F" opacity=".35" stroke="none"/>
+      <circle cx="876" cy="478" r="10" fill="#E8654F" opacity=".35" stroke="none"/>
+    </g>
+
+    <!-- 播报台 -->
+    <g>
+      <path d="M 460 780 L 1140 780 L 1080 940 L 520 940 Z" fill="#F5EFDD" stroke-width="9"/>
+      <rect x="680" y="812" width="240" height="66" rx="12" fill="#1B2440" stroke-width="6"/>
+      <text x="800" y="858" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#F2B705" text-anchor="middle" letter-spacing="4" stroke="none">NEWS</text>
+      <!-- 台灯 -->
+      <path d="M 540 780 q 20 -60 60 -66" fill="none" stroke="#F5EFDD" stroke-width="9"/>
+      <circle cx="608" cy="706" r="20" fill="#F2B705" stroke-width="6"/>
+      <!-- 桌上小星 -->
+      <path d="M 1050 800 l 5 16 l 16 5 l -16 5 l -5 16 l -5 -16 l -16 -5 l 16 -5 Z" fill="#F2B705" stroke-width="4"/>
+    </g>
+
+    <!-- LIVE 角标 -->
+    <g>
+      <rect x="150" y="180" width="180" height="86" rx="16" fill="#E8654F" stroke-width="8"/>
+      <circle cx="192" cy="223" r="13" fill="#F5EFDD" stroke="none"/>
+      <text x="268" y="240" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#F5EFDD" text-anchor="middle" letter-spacing="3" stroke="none">LIVE</text>
+    </g>
+
+    <!-- 星尘 -->
+    <path d="M 300 560 l 6 20 l 20 6 l -20 6 l -6 20 l -6 -20 l -20 -6 l 20 -6 Z" fill="#F5EFDD" stroke-width="4"/>
+    <circle cx="180" cy="740" r="11" fill="#2E9E96" stroke-width="5"/>
+    <circle cx="1440" cy="760" r="10" fill="#F2B705" stroke-width="5"/>
+    <path d="M 1480 180 q 10 -14 24 -8" fill="none" stroke="#F2B705" stroke-width="6"/>
+  </g>
+</svg>
